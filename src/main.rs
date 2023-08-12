@@ -1,4 +1,3 @@
-#![feature(start)]
 #![no_std]
 #![no_main]
 use core::panic::PanicInfo;
@@ -7,9 +6,7 @@ use syscalls::{syscall, Sysno};
 
 #[no_mangle]
 pub extern "C" fn _start() {
-    let s = "Hello\0";
-    unsafe { syscall!(Sysno::write, 1, s.as_ptr() as *const _, 6) };
-    println!("\ntesting");
+    println!("testing");
     loop{}
 }
 
