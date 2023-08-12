@@ -1,6 +1,6 @@
+#![no_std]
 use core::fmt;
 use spin::Mutex;
-use core::result::Result::Ok;
 use syscalls::{syscall, Sysno};
 
 struct Writer {}
@@ -8,7 +8,7 @@ static WRITER: Mutex<Writer> = Mutex::new(Writer {  });
 
 impl fmt::Write for Writer {
     fn write_str(&mut self, s: &str) -> fmt::Result {
-        unsafe{_=syscall!(Sysno::write, 1, s.as_ptr() as usize, s.len());}
+        unsafe {syscall!(Sysno::write, 1, s.as_ptr(), s.len())};
         Ok(())
     }
 }
@@ -22,7 +22,7 @@ pub fn _print(args: fmt::Arguments) {
 
 #[macro_export]
 macro_rules! print {
-    ($($t:tt)*) => { $crate::io::_print(format_args!($($t)*)) };
+    ($($t:tt)*) => { $crate::_print(format_args!($($t)*)) };
 }
 
 #[macro_export]

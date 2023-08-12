@@ -1,18 +1,21 @@
 #![feature(start)]
 #![no_std]
-
+#![no_main]
 use core::panic::PanicInfo;
+use raisinit::println;
+use syscalls::{syscall, Sysno};
 
-mod io;
-
-#[start]
-fn _start(_c: isize, _v: *const *const u8) -> isize {
-    println!("* raisINIT *");
+#[no_mangle]
+pub extern "C" fn _start() {
+    let s = "Hello\0";
+    unsafe { syscall!(Sysno::write, 1, s.as_ptr() as *const _, 6) };
+    println!("\ntesting");
     loop{}
 }
 
 #[panic_handler]
 fn rust_panic(_: &PanicInfo) -> ! {
-    println!("raisINIT: panic!!!");
+    let s = "panic\0";
+    unsafe { syscall!(Sysno::write, 1, s.as_ptr() as *const _, 6) };
     loop{}
 }

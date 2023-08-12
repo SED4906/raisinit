@@ -1,7 +1,7 @@
 # raisinit
 LibC-free init binary
 
-Currently broken, as Rust is inexplicably not generating any code.
+Currently broken, as something seems to be wrong with `core::fmt` here.
 
 Build by running `cargo build --target x86_64-unknown-none`
 
