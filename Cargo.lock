@@ -37,6 +37,16 @@ dependencies = [
 name = "raisinit"
 version = "0.1.0"
 dependencies = [
+ "raisinlib",
+ "spin",
+ "syscalls",
+]
+
+[[package]]
+name = "raisinlib"
+version = "0.1.0"
+source = "git+https://github.com/SED4906/raisinlib#b6c58ee0682abd03790a97d3a858dd0f101226c3"
+dependencies = [
  "spin",
  "syscalls",
 ]
