@@ -1,8 +1,6 @@
 # raisinit
-LibC-free init binary
+LibC-free init binary, runs commands from `/etc/raisinrc` separated by newlines.
 
-Currently broken, as something seems to be wrong with `core::fmt` here.
+The maximum size of raisinrc is 2048 bytes.
 
-Build by running `cargo build --target x86_64-unknown-none`
-
-use as init and hopefully it runs properly
+Programs run by raisinit do not automatically respawn when terminated.
