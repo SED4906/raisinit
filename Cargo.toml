@@ -15,3 +15,11 @@ panic = "abort"
 
 [profile.release]
 panic = "abort"
+
+[[bin]]
+name = "init"
+path = "src/main.rs"
+
+[[bin]]
+name = "respawn"
+path = "src/respawn.rs"

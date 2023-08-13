@@ -1,7 +1,7 @@
 #![no_std]
 #![no_main]
 use core::{panic::PanicInfo, ops::Add, char::MAX};
-use raisinlib::{println, io::{File,Read, Utf8String},exec::execute};
+use raisinlib::{println, io::{File,Read, Utf8String},exec::spawn};
 use syscalls::{syscall, Sysno};
 
 const MAX_FILE_SIZE: usize = 2048;
@@ -42,16 +42,8 @@ pub extern "C" fn _start() {
 
 #[panic_handler]
 fn rust_panic(_: &PanicInfo) -> ! {
-    println!("raisinit: panic!!!");
+    println!("init: panic!!!");
     loop{}
-}
-
-fn spawn(buf: &[u8], args: &[*const u8]) {
-    if let Ok(pid) = unsafe{syscall!(Sysno::fork)} {
-        if pid == 0 {
-            execute(&buf, &args);
-        }
-    }
 }
 
 fn split_into_cmdline(buf: &mut [u8], args: &mut [*const u8]) {

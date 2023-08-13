@@ -45,7 +45,7 @@ dependencies = [
 [[package]]
 name = "raisinlib"
 version = "0.1.0"
-source = "git+https://github.com/SED4906/raisinlib#b6c58ee0682abd03790a97d3a858dd0f101226c3"
+source = "git+https://github.com/SED4906/raisinlib#454d4dae92e14060c36fcce13a5ef5c2c48206fb"
 dependencies = [
  "spin",
  "syscalls",
