@@ -5,15 +5,16 @@ use core::{panic::PanicInfo, arch::asm};
 use raisinlib::println;
 use syscalls::{syscall, Sysno};
 
+#[allow(clippy::missing_safety_doc)]
 #[no_mangle]
-pub extern "C" fn _start() {
-    unsafe{asm!(
+pub unsafe extern "C" fn _start() {
+    asm!(
         "pop rbp;", // C compiler will push rbp
         "pop rdi;",        // argc
         "mov rsi,rsp;", // argv
         "and rsp, -16;",
         "call main;",
-    )};
+    );
 }
 
 #[allow(clippy::missing_safety_doc)]
