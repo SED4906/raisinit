@@ -2,7 +2,7 @@
 #![no_main]
 
 use core::{panic::PanicInfo, arch::asm};
-use raisinlib::{println};
+use raisinlib::println;
 use syscalls::{syscall, Sysno};
 
 #[no_mangle]

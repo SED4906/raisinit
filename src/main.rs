@@ -1,6 +1,6 @@
 #![no_std]
 #![no_main]
-use core::{panic::PanicInfo};
+use core::panic::PanicInfo;
 use raisinlib::{println, io::{File,Read},exec::spawn};
 use syscalls::{syscall, Sysno};
 
