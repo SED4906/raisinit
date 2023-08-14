@@ -23,3 +23,11 @@ path = "src/main.rs"
 [[bin]]
 name = "respawn"
 path = "src/respawn.rs"
+
+[[bin]]
+name = "poweroff"
+path = "src/poweroff.rs"
+
+[[bin]]
+name = "reboot"
+path = "src/reboot.rs"
